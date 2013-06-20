@@ -11,13 +11,24 @@ class UserEloquentTest extends PHPUnit_Framework_TestCase {
         m::close();
     }
 
-    public function testDefaultGetIdentifierSetting()
-    {        
-        $user = new User;
-        $email = $user->loginIdentifier;
-        
-        $this->assertEquals('email@email.com', $email);
+    public function testInstance()
+    {
+        new User;
     }
 
-    
+    public function testDefaultIdentifier()
+    {
+        $user = new User;
+
+        $this->assertEquals('email', $user->getIdentifier());
+    }
+
+    public function testSetIndenitifer()
+    {
+        $user = new User;
+        $user->setIdentifier('username');
+
+        $this->assertEquals('username', $user->getIdentifier());
+    }
+
 }
