@@ -2,8 +2,8 @@
 
 An Authentication and Authorisation package for Laravel 4
 
-[![Latest Stable Version](https://poser.pugx.org/cellcast/vouch/version.png)](https://packagist.org/packages/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/cellcast/vouch/d/total.png)](https://packagist.org/packages/laravel/framework)
+[![Latest Stable Version](https://poser.pugx.org/cellcast/vouch/version.png)](https://packagist.org/packages/cellcast/vouch)
+[![Total Downloads](https://poser.pugx.org/cellcast/vouch/d/total.png)](https://packagist.org/packages/cellcast/vouch)
 [![Build Status](https://travis-ci.org/Cellcast/Vouch.png?branch=master)](https://travis-ci.org/Cellcast/Vouch)
 
 
