@@ -3,8 +3,15 @@
 interface UserInterface {
 
     /**
-     * Returns the column which is used as the users
-     * identifier
+     * Override the users identifier column
+     *
+     * @return  void
+     */
+    public function setIdentifier($loginIdentifier);
+
+    /**
+     * Returns the column name which is used as the
+     * users identifier
      *
      * @return  string
      */
