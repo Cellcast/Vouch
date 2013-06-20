@@ -11,5 +11,33 @@ class User extends Model implements UserInterface {
      * @var string
      */
     protected $table = 'users';
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = array(
+        'password',
+        'persist_code',
+        'reset_password_code'
+    );
+
+    /**
+     * The attributes that aren't mass assignable.
+     *
+     * @var array
+     */
+    protected $guarded = array(
+        'persist_code',
+        'reset_password_code'
+    );
     
+    /**
+     * The login identifier
+     *
+     * @var string
+     */
+     protected static $loginIdentifier = 'email';
+
 }

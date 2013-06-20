@@ -3,13 +3,6 @@
 interface UserInterface {
 
     /**
-     * Returns the user's ID
-     *
-     * @return  mixed
-     */
-    public function getId();
-
-    /**
      * Returns the column which is used as the users
      * identifier
      *

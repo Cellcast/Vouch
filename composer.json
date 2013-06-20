@@ -1,5 +1,5 @@
 {
-	"name": "cellcast/vouch",
+    "name": "cellcast/vouch",
     "description": "An Authentication and Authorisation package for Laravel 4",
     "keywords": ["auth", "security", "laravel", "permissions", "rules", "roles", "groups", "user", "control"],
     "homepage": "http://github.com/cellcast/vouch",
