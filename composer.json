@@ -11,7 +11,7 @@
         }
     ],
     "require": {
-        "php": ">=5.3.0",
+        "php": ">=5.3.0"
     },
     "require-dev": {
         "mockery/mockery": "0.8.*",
@@ -19,7 +19,7 @@
         "illuminate/database": "4.0.*"
     },
     "suggest": {
-        "illuminate/database": "Default user and group implementations.",
+        "illuminate/database": "Default user and group implementations."
     },
     "autoload": {
         "psr-0": {
