@@ -3,15 +3,15 @@
 interface UserInterface {
 
     /**
-     * Returns the user's ID
+     * Override the users identifier column
      *
-     * @return  mixed
+     * @return  void
      */
-    public function getId();
+    public function setIdentifier($loginIdentifier);
 
     /**
-     * Returns the column which is used as the users
-     * identifier
+     * Returns the column name which is used as the
+     * users identifier
      *
      * @return  string
      */
@@ -56,7 +56,7 @@ interface UserInterface {
      *
      * @return  string
      */
-    public function getPersistCode();
+    public function generatePersistCode();
 
     /**
      * Check if the given persist code against the
@@ -74,13 +74,6 @@ interface UserInterface {
      * @param   string  $password
      */
     public function checkPassword($password);
-
-    /**
-     * Get the reset code assigned to the user
-     *
-     * @return  string
-     */
-    public function getResetPasswordCode();
 
     /**
      * Generate a reset code

@@ -1,5 +1,5 @@
 {
-	"name": "cellcast/vouch",
+    "name": "cellcast/vouch",
     "description": "An Authentication and Authorisation package for Laravel 4",
     "keywords": ["auth", "security", "laravel", "permissions", "rules", "roles", "groups", "user", "control"],
     "homepage": "http://github.com/cellcast/vouch",
@@ -15,7 +15,11 @@
     },
     "require-dev": {
         "mockery/mockery": "0.8.*",
-        "phpunit/phpunit": "3.7.*"
+        "phpunit/phpunit": "3.7.*",
+        "illuminate/database": "4.0.*"
+    },
+    "suggest": {
+        "illuminate/database": "Default user and group implementations."
     },
     "autoload": {
         "psr-0": {
