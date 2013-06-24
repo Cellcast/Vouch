@@ -106,15 +106,43 @@ class User extends Model implements UserInterface {
     }
 
     /**
+     * Check if the given password against the user's
+     * password
+     *
+     * @param   string  $password
+     * @return  bool
+     */
+    public function checkPassword($password)
+    {
+        return $this->checkHash($password, $this->password);
+    }
+
+    /**
+     * Checks a non hashed string against its hashed
+     * counterpart
+     *
+     * @param   string  $string
+     * @param   string  $hashedString
+     * @return  bool
+     */
+    public function checkHash($string, $hashedString)
+    {
+        return false;
+    }
+
+    /**
      * Gets the code for when the user is
      * persisted to a cookie or session which
      * identifies the user
      *
      * @return  string
      */
-    public function getPersistCode()
+    public function generatePersistCode()
     {
+        $this->persist_code = $persistCode = $this->generateRandomString();
+        $this->save();
         
+        return $persistCode;
     }
 
     /**
@@ -126,28 +154,12 @@ class User extends Model implements UserInterface {
      */
     public function checkPersistCode($persistCode)
     {
-        
-    }
+        if ( ! $persistCode)
+        {
+            return false;
+        }
 
-    /**
-     * Check if the given password against the user's
-     * password
-     *
-     * @param   string  $password
-     */
-    public function checkPassword($password)
-    {
-        
-    }
-
-    /**
-     * Get the reset code assigned to the user
-     *
-     * @return  string
-     */
-    public function getResetPasswordCode()
-    {
-        
+        return ($this->persist_code === $persistCode);
     }
 
     /**
@@ -169,7 +181,26 @@ class User extends Model implements UserInterface {
      */
     public function checkResetPasswordCode($resetCode)
     {
+        if ( ! $this->reset_password_code)
+        {
+            return false;
+        }
+
+        return ($this->reset_password_code === $resetCode);
+    }
+
+    /**
+     * Generate a random string that can be used for
+     * password reset and persist codes
+     * 
+     * @param   string  $length
+     * @return  string
+     */ 
+    public function generateRandomString($length = 42)
+    {
+        $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         
+        return substr(str_shuffle(str_repeat($pool, 5)), 0, $length);
     }
 
 }

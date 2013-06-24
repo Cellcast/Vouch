@@ -56,7 +56,7 @@ interface UserInterface {
      *
      * @return  string
      */
-    public function getPersistCode();
+    public function generatePersistCode();
 
     /**
      * Check if the given persist code against the
@@ -74,13 +74,6 @@ interface UserInterface {
      * @param   string  $password
      */
     public function checkPassword($password);
-
-    /**
-     * Get the reset code assigned to the user
-     *
-     * @return  string
-     */
-    public function getResetPasswordCode();
 
     /**
      * Generate a reset code
