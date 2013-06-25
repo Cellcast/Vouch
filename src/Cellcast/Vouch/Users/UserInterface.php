@@ -41,15 +41,6 @@ interface UserInterface {
     public function isBanned();
 
     /**
-     * Check if the user is a super user
-     * Grants user access to every task, regardless
-     * of assigned permissions
-     *
-     * @return  bool
-     */
-    public function isSuperUser();
-
-    /**
      * Gets the code for when the user is
      * persisted to a cookie or session which
      * identifies the user

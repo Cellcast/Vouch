@@ -4,7 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 use Cellcast\Vouch\Users\UserInterface;
 
 class User extends Model implements UserInterface {
-    
+
     /**
      * The table associated with the model
      *
@@ -90,19 +90,7 @@ class User extends Model implements UserInterface {
      */
     public function isBanned()
     {
-        
-    }
-
-    /**
-     * Check if the user is a super user
-     * Grants user access to every task, regardless
-     * of assigned permissions
-     *
-     * @return  bool
-     */
-    public function isSuperUser()
-    {
-        
+        return $this->banned;
     }
 
     /**
@@ -169,7 +157,10 @@ class User extends Model implements UserInterface {
      */
     public function generateResetPasswordCode()
     {
+        $this->reset_password_code = $resetCode = $this->generateRandomString();
+        $this->save();
         
+        return $resetCode;
     }
 
     /**
@@ -201,6 +192,16 @@ class User extends Model implements UserInterface {
         $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         
         return substr(str_shuffle(str_repeat($pool, 5)), 0, $length);
+    }
+
+    /**
+     * Password Mutator
+     *
+     * @return  void
+     */
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = 'hashed_password';//Hash::make($value);
     }
 
 }

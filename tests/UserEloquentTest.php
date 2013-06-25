@@ -42,11 +42,6 @@ class UserEloquentTest extends PHPUnit_Framework_TestCase {
         $this->assertTrue($user->checkPassword($password));
     }
 
-    public function testCheckHash()
-    {
-        //$this->assertTrue(false);
-    }
-
     public function testGenerateRandomStrings()
     {
         $user = new User;
@@ -82,10 +77,13 @@ class UserEloquentTest extends PHPUnit_Framework_TestCase {
 
         $this->assertNull($user->persist_code);
 
-        $user->shouldReceive('generateRandomString')->once()->andReturn('random_string');
+        $user->shouldReceive('generateRandomString')->once()->andReturn($randomString = 'random_string');
         $user->shouldReceive('save')->once();
 
-        $this->assertEquals('random_string', $user->generatePersistCode());
+        $persistCode = $user->generatePersistCode();
+
+        $this->assertEquals($randomString, $persistCode);
+        $this->assertEquals($randomString, $user->persist_code);
     }
 
     public function testCheckPersistCode()
@@ -103,6 +101,21 @@ class UserEloquentTest extends PHPUnit_Framework_TestCase {
 
         $this->assertFalse($user->checkPersistCode('persist_code'));
         $this->assertFalse($user->checkPersistCode('not_persist_code'));
+    }
+
+        public function testGenerateResetPasswordCode()
+    {
+        $user = m::mock('Cellcast\Vouch\Users\Eloquent\User[generateRandomString,save]');
+
+        $this->assertNull($user->reset_password_code);
+
+        $user->shouldReceive('generateRandomString')->once()->andReturn($randomString = 'random_string');
+        $user->shouldReceive('save')->once();
+
+        $resetCode = $user->generateResetPasswordCode();
+
+        $this->assertEquals($randomString, $resetCode);
+        $this->assertEquals($randomString, $user->reset_password_code);
     }
 
     public function testCheckResetPasswordCode()
