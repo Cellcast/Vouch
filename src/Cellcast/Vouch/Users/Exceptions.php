@@ -1,4 +1,4 @@
-<?php namespace Cartalyst\Sentry\Users;
+<?php namespace Cellcast\Vouch\Users;
 
 class LoginRequiredException extends \UnexpectedValueException {}
 class PasswordRequiredException extends \UnexpectedValueException {}

@@ -25,7 +25,7 @@
     "autoload": {
         "classmap": [
             "src/Cellcast/Vouch/Users/Exceptions.php"
-        ]
+        ],
         "psr-0": {
             "Cellcast\\Vouch": "src/"
         }
