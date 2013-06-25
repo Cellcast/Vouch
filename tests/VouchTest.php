@@ -19,7 +19,7 @@ class VouchTest extends PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @expectedException Cartalyst\Sentry\Users\LoginRequiredException
+     * @expectedException Cellcast\Vouch\Users\LoginRequiredException
      */
     public function testAuthenticateLoginIdentifierNotProvided()
     {
