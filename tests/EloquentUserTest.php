@@ -4,7 +4,7 @@ use Mockery as m;
 use Cellcast\Vouch\Users\Eloquent\User;
 use PHPUnit_Framework_TestCase;
 
-class UserEloquentTest extends PHPUnit_Framework_TestCase {
+class EloquentUserTest extends PHPUnit_Framework_TestCase {
 
     public function tearDown()
     {
