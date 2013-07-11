@@ -1,6 +1,7 @@
 <?php namespace Cellcast\Vouch;
 
 use Cellcast\Vouch\Vouch;
+use Cellcast\Vouch\Users\Eloquent\Provider as UserProvider;
 use Illuminate\Support\ServiceProvider;
 
 class VouchServiceProvider extends ServiceProvider {
@@ -31,6 +32,8 @@ class VouchServiceProvider extends ServiceProvider {
      */
     public function register()
     {
+        $this->registerUserProvider();
+    
         $this->app['vouch'] = $this->app->share(function($app)
         {
             // Once the authentication service has actually been requested by the developer
@@ -39,6 +42,16 @@ class VouchServiceProvider extends ServiceProvider {
             $app['vouch'] = true;
 
             return new Vouch();
+        });
+    }
+
+    public function registerUserProvider()
+    {
+        $this->app['vouch.user'] = $this->app->share(function($app)
+        {
+            $model = 'Cellcast\Vouch\Users\Eloquent\User';
+        
+            return new UserProvider($model);
         });
     }
 
